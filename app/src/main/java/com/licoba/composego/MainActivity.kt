@@ -10,12 +10,23 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.blankj.utilcode.util.ConvertUtils
 import com.licoba.composego.ui.theme.ComposegoTheme
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
+        splashScreen.setKeepOnScreenCondition {
+            false
+            //TODO
+            //return true while fetching data from network
+            // when (uiState) {
+            //                Loading -> true
+            //                is Success -> false
+            //            }
+        }
         setContent {
             ComposegoTheme {
                 // A surface container using the 'background' color from the theme
