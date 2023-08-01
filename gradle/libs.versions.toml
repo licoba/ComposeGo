@@ -24,6 +24,7 @@ leakcanary                              = "2.12"
 xxpermissions                           = "18.2"
 eventbus                                = "3.3.1"
 mmkv                                    = "1.3.0"
+splashscreen                            = "1.0.0"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -60,6 +61,7 @@ leakcanary = { group="com.squareup.leakcanary", name="leakcanary-android", versi
 xxpermissions = { group="com.github.getActivity", name="XXPermissions", version.ref="xxpermissions"}
 eventbus = { group="org.greenrobot", name="eventbus", version.ref="eventbus"}
 mmkv = { group="com.tencent", name="mmkv", version.ref="mmkv"}
+splashscreen = { group="androidx.core", name="core-splashscreen", version.ref="splashscreen"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }
