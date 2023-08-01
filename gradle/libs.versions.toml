@@ -22,6 +22,7 @@ flower                                  = "3.1.0"
 util-code                               = "1.31.1"
 leakcanary                              = "2.12"
 xxpermissions                           = "18.2"
+eventbus                                = "3.3.1"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -56,6 +57,7 @@ flower = { group="io.github.hadiyarajesh.flower-retrofit", name="flower-retrofit
 utilcode = { group="com.blankj", name="utilcodex", version.ref="util-code"}
 leakcanary = { group="com.squareup.leakcanary", name="leakcanary-android", version.ref="leakcanary"}
 xxpermissions = { group="com.github.getActivity", name="XXPermissions", version.ref="xxpermissions"}
+eventbus = { group="org.greenrobot", name="eventbus", version.ref="eventbus"}
 
 [plugins]
 androidApplication = { id = "com.android.application", version.ref = "agp" }

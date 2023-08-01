@@ -63,6 +63,7 @@ dependencies {
     implementation(libs.navigation.compose)
     implementation(libs.utilcode)
     implementation(libs.xxpermissions)
+    implementation(libs.eventbus)
 
 
     androidTestImplementation(libs.androidx.test.ext.junit)
