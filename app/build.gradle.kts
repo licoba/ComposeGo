@@ -61,6 +61,8 @@ dependencies {
     implementation(libs.ui.tooling.preview)
     implementation(libs.material3)
     implementation(libs.navigation.compose)
+    implementation(libs.utilcode)
+    implementation(libs.xxpermissions)
 
 
     androidTestImplementation(libs.androidx.test.ext.junit)
@@ -71,6 +73,7 @@ dependencies {
 
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+    debugImplementation(libs.leakcanary)
 
     testImplementation(libs.junit)
 
