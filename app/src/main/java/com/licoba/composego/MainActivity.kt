@@ -15,17 +15,24 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.licoba.composego.core.viewmodel.LoginViewModel
+import com.licoba.composego.features.login.LoginRoute
 import com.licoba.composego.features.login.LoginScreen
 import com.licoba.composego.ui.theme.AppTheme
 import com.licoba.composego.utils.logD
 import com.licoba.composego.utils.showDebugToast
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 import timber.log.Timber
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+
+//        val viewModel: LoginViewModel by
+
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         splashScreen.setKeepOnScreenCondition {
@@ -47,6 +54,7 @@ class MainActivity : ComponentActivity() {
                     color = MaterialTheme.colorScheme.background
                 ) {
                     Greeting("Android")
+                    LoginRoute()
                 }
             }
         }

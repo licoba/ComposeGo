@@ -48,8 +48,9 @@ fun LoginScreen(
         modifier = Modifier
             .fillMaxSize()
             .padding(20.dp),
-        verticalArrangement = Arrangement.Center
+        verticalArrangement = Arrangement.Top
     ) {
+        Spacer(modifier = Modifier.height(100.dp))
         InputTextField(text = loginUiInfo.userName) {
             onUserNameChanged(it)
         }
@@ -60,7 +61,8 @@ fun LoginScreen(
         Spacer(modifier = Modifier.height(20.dp))
         AppButton(text = stringResource(id = com.licoba.composego.R.string.login_do_login)) {
             //TODO call  login()
-            navigateToHome()
+            login()
+//            navigateToHome()
         }
 
     }
