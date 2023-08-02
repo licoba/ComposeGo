@@ -1,8 +1,9 @@
 plugins {
-    kotlin("kapt")
+
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.hiltAndroid)
+    alias(libs.plugins.ksp) // 用ksp别用kapt了
 }
 
 android {
@@ -73,7 +74,7 @@ dependencies {
     // hilt
     implementation(libs.hilt.navigation)
     implementation(libs.hilt.android)
-    kapt(libs.hilt.android.compiler)
+    ksp(libs.hilt.android.compiler)
 
     //retrofit
     implementation(libs.retrofit)
@@ -98,10 +99,6 @@ dependencies {
 
 }
 
-// Allow references to generated code
-kapt {
-    correctErrorTypes = true
-}
 
 // Make Kapt-generated stubs to target JDK 17
 tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask>().configureEach {

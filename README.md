@@ -17,6 +17,8 @@ Compose模板项目，更适合国内的风水！（开发中)
 10. 用`Splashscreen API`作为首屏加载（官方推荐）
 11. 用`build-logic`来代替`buildSrc`作为构建（来自Google官方的 [nowinandroid](https://github.com/android/nowinandroid)） 
 12. 用`Coroutines`+`Flow`来代替`RxJava`进行异步操作
+13. 用`[ksp](https://developer.android.com/build/migrate-to-ksp)`代替`kapt`进行注解处理
+
 
 ## 三方库
 1. 用`AndroidUtilCode`来用作常用的工具类集合
