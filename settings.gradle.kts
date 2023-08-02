@@ -14,5 +14,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "composego"
+rootProject.name = "ComposeGo"
 include(":app")
