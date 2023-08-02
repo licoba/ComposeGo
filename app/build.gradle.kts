@@ -75,6 +75,14 @@ dependencies {
     implementation(libs.hilt.android)
     kapt(libs.hilt.android.compiler)
 
+    //retrofit
+    implementation(libs.retrofit)
+    implementation(libs.retrofit.converter.moshi)
+    implementation(libs.okhttp.interceptor.logging)
+    // json库moshi
+    implementation(libs.moshi)
+    implementation(libs.moshi.kotlin.codegen)
+
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

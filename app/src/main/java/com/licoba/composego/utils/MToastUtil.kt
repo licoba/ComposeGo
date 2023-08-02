@@ -20,7 +20,7 @@ fun showDebugToast(
     isLong: Boolean = false,
     gravity: Int = Gravity.CENTER
 ) {
-    if (!isApkInDebug(BaseApp.context)) return
+    if (!isApkInDebug()) return
     ToastUtils.make()
         .setBgColor(Color.parseColor("#262626"))
         .setGravity(Gravity.CENTER, 0, 0)
