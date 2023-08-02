@@ -1,11 +1,7 @@
 package com.licoba.composego
 
-import android.annotation.SuppressLint
 import android.app.Application
 import android.content.Context
-import android.content.pm.ActivityInfo
-import android.content.res.Configuration
-import android.util.Log
 import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.*
 import timber.log.Timber
@@ -16,23 +12,22 @@ import timber.log.Timber
  * @author licoba
  * @since 2023/08/02
  * 所有使用 Hilt 的应用都必须包含一个带有 @HiltAndroidApp 注解的 Application 类
+ *
+ * HiltAndroidApp 在编译时会有一个警告。。。。
  */
 @HiltAndroidApp
-open class BaseApp : Application() {
+class BaseApp : Application() {
+
+    init { INSTANCE = this }
 
 
     companion object {
-        @SuppressLint("StaticFieldLeak")
-        @JvmStatic
-        @get:JvmName("context")
-        lateinit var context: Context
+
+        lateinit var INSTANCE: BaseApp
             private set
 
-        @SuppressLint("StaticFieldLeak")
-        @JvmStatic
-        @get:JvmName("application")
-        lateinit var application: BaseApp
-            private set
+        val applicationContext: Context get() { return INSTANCE.applicationContext }
+
 
         // 全局CoroutineScope
         val mCoroutineScope by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) {
@@ -46,12 +41,6 @@ open class BaseApp : Application() {
         }
     }
 
-    override fun attachBaseContext(base: Context) {
-        super.attachBaseContext(base)
-        context = base
-        application = this
-    }
-
 
     override fun onCreate() {
         super.onCreate()
@@ -63,7 +52,6 @@ open class BaseApp : Application() {
     private fun initDepends() {
         Timber.plant(Timber.DebugTree())
     }
-
 
 
 }
