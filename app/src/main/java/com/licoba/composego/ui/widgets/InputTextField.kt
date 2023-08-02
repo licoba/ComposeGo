@@ -14,7 +14,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
-import com.licoba.composego.ui.theme.ComposegoTheme
+import com.licoba.composego.ui.theme.AppTheme
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -121,7 +121,7 @@ fun InputTextField(
 @Preview
 @Composable
 fun PreviewOutlinedTextField() {
-    ComposegoTheme {
+    AppTheme {
         InputTextField(text = "Outlined", type = InputTextFieldType.Outlined) {}
     }
 }
@@ -129,7 +129,7 @@ fun PreviewOutlinedTextField() {
 @Preview
 @Composable
 fun PreviewClassicTextField() {
-    ComposegoTheme {
+    AppTheme {
         InputTextField(text = "Classic", type = InputTextFieldType.Classic) {}
     }
 }
@@ -137,7 +137,7 @@ fun PreviewClassicTextField() {
 @Preview
 @Composable
 fun PreviewWithIconTextField() {
-    ComposegoTheme {
+    AppTheme {
         InputTextField(
             text = "With Icon",
             type = InputTextFieldType.WithIcon,

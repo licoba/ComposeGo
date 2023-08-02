@@ -3,6 +3,7 @@ package com.licoba.composego
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -15,7 +16,7 @@ import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.licoba.composego.features.login.LoginScreen
-import com.licoba.composego.ui.theme.ComposegoTheme
+import com.licoba.composego.ui.theme.AppTheme
 import com.licoba.composego.utils.logD
 import com.licoba.composego.utils.showDebugToast
 import kotlinx.coroutines.cancel
@@ -39,7 +40,7 @@ class MainActivity : ComponentActivity() {
             //            }
         }
         setContent {
-            ComposegoTheme {
+            AppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
@@ -63,7 +64,7 @@ fun Greeting(name: String, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun GreetingPreview() {
-    ComposegoTheme {
+    AppTheme {
         Greeting("Android")
     }
 }

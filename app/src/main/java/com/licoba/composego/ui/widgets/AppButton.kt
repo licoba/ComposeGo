@@ -7,7 +7,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import com.licoba.composego.ui.theme.ComposegoTheme
+import com.licoba.composego.ui.theme.AppTheme
 
 @Composable
 fun AppButton(
@@ -69,7 +69,7 @@ private fun ButtonContent(text: String) {
 @Preview
 @Composable
 fun PreviewOutlinedButton() {
-    ComposegoTheme {
+    AppTheme {
         AppButton(text = "Outlined", type = AppButtonType.Outlined) {
         }
     }
@@ -78,7 +78,7 @@ fun PreviewOutlinedButton() {
 @Preview
 @Composable
 fun PreviewTextButton() {
-    ComposegoTheme {
+    AppTheme {
         AppButton(text = "Text Button", type = AppButtonType.Text) {
         }
     }
@@ -87,7 +87,7 @@ fun PreviewTextButton() {
 @Preview(name = "Primary Button")
 @Composable
 fun PreviewAppButton() {
-    ComposegoTheme {
+    AppTheme {
         AppButton(text = "Text") {}
     }
 }
@@ -95,7 +95,7 @@ fun PreviewAppButton() {
 @Preview(name = "Disabled Button")
 @Composable
 fun PreviewDisabledAppButton() {
-    ComposegoTheme {
+    AppTheme {
         AppButton(text = "Text", enabled = false) {}
     }
 }

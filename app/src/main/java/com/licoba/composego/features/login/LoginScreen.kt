@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.licoba.composego.core.viewmodel.LoginUiInfo
 import com.licoba.composego.core.viewmodel.LoginViewModel
-import com.licoba.composego.ui.theme.ComposegoTheme
+import com.licoba.composego.ui.theme.AppTheme
 import com.licoba.composego.ui.widgets.AppButton
 import com.licoba.composego.ui.widgets.InputTextField
 
@@ -70,7 +70,7 @@ fun LoginScreen(
 @Preview
 @Composable
 fun LoginPreview() {
-    ComposegoTheme {
+    AppTheme {
         LoginScreen(LoginUiInfo("", ""), {}, {}, {}, {})
     }
 }
