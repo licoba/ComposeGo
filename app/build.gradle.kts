@@ -85,6 +85,7 @@ dependencies {
     // json库moshi
     implementation(libs.moshi)
     implementation(libs.moshi.kotlin.codegen)
+    ksp(libs.moshi.kotlin.codegen)
 
 
     androidTestImplementation(libs.androidx.test.ext.junit)
