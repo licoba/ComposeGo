@@ -1,6 +1,8 @@
 plugins {
-    id("com.android.application")
-    id("org.jetbrains.kotlin.android")
+    kotlin("kapt")
+    alias(libs.plugins.androidApplication)
+    alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.hiltAndroid)
 }
 
 android {
@@ -30,17 +32,17 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility = JavaVersion.VERSION_1_8
-        targetCompatibility = JavaVersion.VERSION_1_8
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
     }
     kotlinOptions {
-        jvmTarget = "1.8"
+        jvmTarget = "17"
     }
     buildFeatures {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.4.3"
+        kotlinCompilerExtensionVersion = libs.versions.compose.compiler.get()
     }
     packaging {
         resources {
@@ -68,6 +70,11 @@ dependencies {
     implementation(libs.splashscreen)
     implementation(libs.timber)
 
+    // hilt
+    implementation(libs.hilt.navigation)
+    implementation(libs.hilt.android)
+    kapt(libs.hilt.android.compiler)
+
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)
@@ -81,4 +88,14 @@ dependencies {
 
     testImplementation(libs.junit)
 
+}
+
+// Allow references to generated code
+kapt {
+    correctErrorTypes = true
+}
+
+// Make Kapt-generated stubs to target JDK 17
+tasks.withType<org.jetbrains.kotlin.gradle.internal.KaptGenerateStubsTask>().configureEach {
+    kotlinOptions.jvmTarget = "17"
 }

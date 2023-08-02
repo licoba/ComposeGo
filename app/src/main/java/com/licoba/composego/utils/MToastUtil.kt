@@ -11,13 +11,13 @@ import com.licoba.composego.utils.MAppUtil.isApkInDebug
 
 /**
  * 显示调试的Toast
- * @param text String
- * @param durations Int
- * @param gravity Int
+ * @param text String  文本
+ * @param isLong Boolean 是否长时间显示
+ * @param gravity Int  位置
  */
 fun showDebugToast(
     text: String,
-    durations: Int = Toast.LENGTH_SHORT,
+    isLong: Boolean = false,
     gravity: Int = Gravity.CENTER
 ) {
     if (!isApkInDebug(BaseApp.context)) return
@@ -25,6 +25,8 @@ fun showDebugToast(
         .setBgColor(Color.parseColor("#262626"))
         .setGravity(Gravity.CENTER, 0, 0)
         .setTextColor(Color.WHITE)
+        .setDurationIsLong(isLong)
+        .setGravity(gravity, 0, 0)
         .show("\uD83D\uDE05\n" + text)
 
 }

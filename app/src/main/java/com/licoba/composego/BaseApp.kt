@@ -6,6 +6,7 @@ import android.content.Context
 import android.content.pm.ActivityInfo
 import android.content.res.Configuration
 import android.util.Log
+import dagger.hilt.android.HiltAndroidApp
 import kotlinx.coroutines.*
 import timber.log.Timber
 
@@ -15,6 +16,7 @@ import timber.log.Timber
  * @author licoba
  * @since 2023/08/02
  */
+@HiltAndroidApp
 open class BaseApp : Application() {
 
 
