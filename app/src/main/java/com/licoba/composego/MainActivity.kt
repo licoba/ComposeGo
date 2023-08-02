@@ -15,17 +15,21 @@ import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.ToastUtils
 import com.licoba.composego.ui.theme.ComposegoTheme
+import com.licoba.composego.utils.logD
 import com.licoba.composego.utils.showDebugToast
 import kotlinx.coroutines.cancel
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
+import timber.log.Timber
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         splashScreen.setKeepOnScreenCondition {
+            lifecycleScope.launch {  }
             showDebugToast("闪屏页消失")
+            logD("闪屏页消失","很好")
             false  // false为消失  true为保持
             //return true while fetching data from network
             // when (uiState) {

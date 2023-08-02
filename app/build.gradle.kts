@@ -66,6 +66,7 @@ dependencies {
     implementation(libs.eventbus)
     implementation(libs.mmkv)
     implementation(libs.splashscreen)
+    implementation(libs.timber)
 
 
     androidTestImplementation(libs.androidx.test.ext.junit)
