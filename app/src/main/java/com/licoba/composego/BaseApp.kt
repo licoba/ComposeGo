@@ -15,6 +15,7 @@ import timber.log.Timber
  *
  * @author licoba
  * @since 2023/08/02
+ * 所有使用 Hilt 的应用都必须包含一个带有 @HiltAndroidApp 注解的 Application 类
  */
 @HiltAndroidApp
 open class BaseApp : Application() {
