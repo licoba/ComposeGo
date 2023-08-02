@@ -1,6 +1,5 @@
 package com.licoba.composego.features.login
 
-import android.annotation.SuppressLint
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -51,7 +50,6 @@ fun LoginScreen(
             .padding(20.dp),
         verticalArrangement = Arrangement.Center
     ) {
-
         InputTextField(text = loginUiInfo.userName) {
             onUserNameChanged(it)
         }
@@ -60,7 +58,7 @@ fun LoginScreen(
             onPasswordChanged(it)
         }
         Spacer(modifier = Modifier.height(20.dp))
-        AppButton(text = stringResource(id = com.licoba.composego.R.string.login_user_name)) {
+        AppButton(text = stringResource(id = com.licoba.composego.R.string.login_do_login)) {
             //TODO call  login()
             navigateToHome()
         }

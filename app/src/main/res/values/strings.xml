@@ -2,4 +2,5 @@
     <string name="app_name">ComposeGo</string>
     <string name="login_user_name">用户名</string>
     <string name="login_password">密码</string>
+    <string name="login_do_login">登录</string>
 </resources>
