@@ -1,5 +1,5 @@
 package com.licoba.composego.core.repo
 
-interface LoginRepo {
+interface UserRepo {
     fun doLogin()
 }

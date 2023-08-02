@@ -4,7 +4,7 @@ import javax.inject.Inject
 import javax.inject.Singleton
 
 @Singleton
-class LoginRepoImpl @Inject constructor():LoginRepo {
+class UserRepoImpl @Inject constructor():UserRepo {
     override fun doLogin(){
 
     }
