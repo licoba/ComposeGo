@@ -14,6 +14,7 @@ import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
 import com.blankj.utilcode.util.ConvertUtils
 import com.blankj.utilcode.util.ToastUtils
+import com.licoba.composego.features.login.LoginScreen
 import com.licoba.composego.ui.theme.ComposegoTheme
 import com.licoba.composego.utils.logD
 import com.licoba.composego.utils.showDebugToast

@@ -13,7 +13,7 @@ import javax.inject.Inject
 class LoginViewModel @Inject constructor(
     private val repo: UserRepoImpl
 ) : ViewModel() {
-    private val loginUiInfo by lazy {
+     val loginUiInfo by lazy {
         MutableStateFlow(
             LoginUiInfo("", "")
         )
@@ -23,6 +23,14 @@ class LoginViewModel @Inject constructor(
         viewModelScope.launch {
             repo.doLogin(loginUiInfo.value.userName, loginUiInfo.value.password)
         }
+    }
+
+    fun onUserNameChanged(userName: String) {
+        loginUiInfo.value = loginUiInfo.value.copy(userName = userName)
+    }
+
+    fun onPasswordChanged(password: String) {
+        loginUiInfo.value = loginUiInfo.value.copy(password = password)
     }
 }
 
