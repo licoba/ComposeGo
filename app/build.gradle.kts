@@ -4,6 +4,7 @@ plugins {
     alias(libs.plugins.kotlinAndroid)
     alias(libs.plugins.hiltAndroid)
     alias(libs.plugins.ksp) // 用ksp别用kapt了
+    alias(libs.plugins.kotlinParcelize)
 }
 
 android {
@@ -70,6 +71,7 @@ dependencies {
     implementation(libs.mmkv)
     implementation(libs.splashscreen)
     implementation(libs.timber)
+    implementation(libs.kotlinParcelize)
 
     // hilt
     implementation(libs.hilt.navigation)
