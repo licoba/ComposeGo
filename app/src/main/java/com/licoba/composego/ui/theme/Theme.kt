@@ -11,12 +11,12 @@ import androidx.compose.material3.dynamicLightColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.SideEffect
+import androidx.compose.runtime.staticCompositionLocalOf
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalView
 import androidx.core.view.WindowCompat
-
 
 
 /**
@@ -89,6 +89,10 @@ fun AppTheme(
     } else {
         DarkColors
     }
+
+    val dimens: Dimensions = staticCompositionLocalOf {
+        normalDimensions
+    }.current
 
     MaterialTheme(
         colorScheme = colors,
