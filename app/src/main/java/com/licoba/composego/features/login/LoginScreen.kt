@@ -31,6 +31,9 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import coil.compose.AsyncImage
+import coil.request.ImageRequest
+import coil.size.Scale
 import com.licoba.composego.R
 import com.licoba.composego.core.viewmodel.LoginUiInfo
 import com.licoba.composego.core.viewmodel.LoginViewModel
@@ -90,20 +93,21 @@ fun LoginScreen(
                     textAlign = TextAlign.Center
                 )
 
-                // Login Logo
-//                AsyncImage(
-//                    modifier = Modifier
-//                        .fillMaxWidth()
-//                        .height(128.dp)
-//                        .padding(top = AppTheme.dimens.paddingSmall),
-//                    model = ImageRequest.Builder(LocalContext.current)
-//                        .data(data = androidx.compose.foundation.layout.R.drawable.jetpack_compose_logo)
-//                        .crossfade(enable = true)
-//                        .scale(Scale.FILL)
-//                        .build(),
-//                    contentDescription = stringResource(id = androidx.compose.foundation.layout.R.string.login_heading_text)
-//                )
+                // Login Logo 使用coil加载
+                AsyncImage(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(128.dp)
+                        .padding(top = dimens.paddingSmall),
+                    model = ImageRequest.Builder(LocalContext.current)
+                        .data(data = R.drawable.jetpack_compose_logo)
+                        .crossfade(enable = true)
+                        .scale(Scale.FILL)
+                        .build(),
+                    contentDescription = stringResource(id = R.string.login_do_login)
+                )
 
+                Spacer(modifier = Modifier.height(20.dp))
                 InputTextField(
                     icon = Icons.Default.AccountBox,
                     label = stringResource(R.string.login_user_name),

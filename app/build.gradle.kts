@@ -72,6 +72,7 @@ dependencies {
     implementation(libs.splashscreen)
     implementation(libs.timber)
     implementation(libs.kotlinParcelize)
+    implementation(libs.coil)
 
     // hilt
     implementation(libs.hilt.navigation)
