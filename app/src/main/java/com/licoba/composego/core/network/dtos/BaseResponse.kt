@@ -5,9 +5,18 @@ import com.squareup.moshi.JsonClass
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
+/**
+ * wanAndroid开放API的数据结构定义
+ * {
+ *     "data": ...,
+ *     "errorCode": 0,
+ *     "errorMsg": ""
+ * }
+ */
 @Serializable
 @JsonClass(generateAdapter = true)
-data class UserDto(
+data class BaseResponse<T>(
     val errorCode: Long,
     val errorMsg: String,
+    val `data`: T?
 )
