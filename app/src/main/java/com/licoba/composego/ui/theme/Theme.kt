@@ -24,29 +24,29 @@ import androidx.core.view.WindowCompat
  */
 @VisibleForTesting
 val LightColors = lightColorScheme(
-    primary = Purple40,
-    onPrimary = Color.White,
-    primaryContainer = Purple90,
-    onPrimaryContainer = Purple10,
-    secondary = Orange40,
-    onSecondary = Color.White,
-    secondaryContainer = Orange90,
-    onSecondaryContainer = Orange10,
-    tertiary = Blue40,
-    onTertiary = Color.White,
-    tertiaryContainer = Blue90,
-    onTertiaryContainer = Blue10,
-    error = Red40,
-    onError = Color.White,
-    errorContainer = Red90,
-    onErrorContainer = Red10,
-    background = DarkPurpleGray99,
-    onBackground = DarkPurpleGray10,
-    surface = DarkPurpleGray99,
-    onSurface = DarkPurpleGray10,
-    surfaceVariant = PurpleGray90,
-    onSurfaceVariant = PurpleGray30,
-    outline = PurpleGray50
+    primary = Blue80,  // 主要颜色，通常用于突出重要的界面元素，如按钮、选中状态等。
+    onPrimary = Color.White,  // 在按钮上的文本或图标的颜色。
+    primaryContainer = Purple90, //  主要容器颜色，用于表示主要颜色的容器，如卡片、对话框等。
+    onPrimaryContainer = Purple10, // 在主要容器颜色上的文本或图标的颜色。
+    secondary = Orange40, // 次要颜色，通常用于辅助界面元素。
+    onSecondary = Color.White, // 在次要颜色上的文本或图标的颜色。
+    secondaryContainer = Orange90, //  次要容器颜色，用于表示次要颜色的容器。
+    onSecondaryContainer = Orange10, // 在次要容器颜色上的文本或图标的颜色。
+    tertiary = Blue40, // 第三颜色，用于辅助界面元素。
+    onTertiary = Color.White, // 在第三颜色上的文本或图标的颜色。
+    tertiaryContainer = Blue90, // 第三容器颜色，用于表示第三颜色的容器。
+    onTertiaryContainer = Blue10, //  在第三容器颜色上的文本或图标的颜色。
+    error = Red40, // 错误颜色，用于表示错误状态或错误信息。
+    onError = Color.White, //  在错误颜色上的文本或图标的颜色。
+    errorContainer = Red90, //  错误容器颜色，用于表示错误颜色的容器。
+    onErrorContainer = Red10, //  在错误容器颜色上的文本或图标的颜色。
+    background = DarkPurpleGray99, // 背景颜色，用于界面的背景。
+    onBackground = DarkPurpleGray10, // 在背景颜色上的文本或图标的颜色。
+    surface = DarkPurpleGray99, // 表面颜色，用于表示界面上的表面元素，如卡片、对话框等。
+    onSurface = DarkPurpleGray10, //  在表面颜色上的文本或图标的颜色。
+    surfaceVariant = PurpleGray90, // 表面变体颜色，用于表示表面元素的不同状态或变体。
+    onSurfaceVariant = PurpleGray30, // 在表面变体颜色上的文本或图标的颜色。
+    outline = PurpleGray50 //  轮廓颜色，用于表示界面元素的轮廓或边框颜色。
 )
 
 /**
