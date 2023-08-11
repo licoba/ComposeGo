@@ -90,9 +90,6 @@ fun AppTheme(
         DarkColors
     }
 
-    val dimens: Dimensions = staticCompositionLocalOf {
-        normalDimensions
-    }.current
 
     MaterialTheme(
         colorScheme = colors,
