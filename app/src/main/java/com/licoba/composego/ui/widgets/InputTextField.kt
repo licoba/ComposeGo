@@ -6,14 +6,32 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccountBox
 import androidx.compose.material.icons.filled.Email
-import androidx.compose.material3.*
+import androidx.compose.material.icons.outlined.Visibility
+import androidx.compose.material.icons.outlined.VisibilityOff
+import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.material3.TextField
+import androidx.compose.material3.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.input.PasswordVisualTransformation
+import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
+import com.licoba.composego.R
 import com.licoba.composego.ui.theme.AppTheme
 
 
@@ -29,8 +47,8 @@ fun InputTextField(
     keyboardActions: KeyboardActions = KeyboardActions.Default,
     imeAction: ImeAction = ImeAction.Done,
     enabled: Boolean = true,
-    maxLine: Int = 3,
-    type: InputTextFieldType = InputTextFieldType.WithIcon,
+    maxLine: Int = 1,
+    type: InputTextFieldType = InputTextFieldType.Outlined,
     onValueChange: (String) -> Unit
 ) {
     when (type) {
@@ -51,6 +69,7 @@ fun InputTextField(
             placeholder = { Text(text = label) },
             maxLines = maxLine
         )
+
         InputTextFieldType.Outlined -> OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
@@ -65,6 +84,7 @@ fun InputTextField(
             shape = MaterialTheme.shapes.small,
             maxLines = maxLine
         )
+
         InputTextFieldType.WithIcon -> OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
@@ -89,6 +109,7 @@ fun InputTextField(
             shape = MaterialTheme.shapes.small,
             maxLines = maxLine
         )
+
         InputTextFieldType.IconClickable -> OutlinedTextField(
             value = text,
             onValueChange = onValueChange,
@@ -148,4 +169,71 @@ fun PreviewWithIconTextField() {
 
 enum class InputTextFieldType {
     Classic, Outlined, WithIcon, IconClickable
+}
+
+
+@OptIn(ExperimentalComposeUiApi::class, ExperimentalMaterial3Api::class)
+@Composable
+fun PasswordTextField(
+    modifier: Modifier = Modifier,
+    value: String,
+    label: String,
+    isError: Boolean = false,
+    errorText: String = "",
+    imeAction: ImeAction = ImeAction.Done,
+    onValueChange: (String) -> Unit,
+) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+
+    var isPasswordVisible by remember {
+        mutableStateOf(false)
+    }
+
+    OutlinedTextField(
+        modifier = modifier,
+        value = value,
+        onValueChange = onValueChange,
+        label = { Text(text = label) },
+        trailingIcon = {
+            IconButton(onClick = {
+                isPasswordVisible = !isPasswordVisible
+            }) {
+
+                val visibleIconAndText = Pair(
+                    first = Icons.Outlined.Visibility,
+                    second = stringResource(id = R.string.icon_password_visible)
+                )
+
+                val hiddenIconAndText = Pair(
+                    first = Icons.Outlined.VisibilityOff,
+                    second = stringResource(id = R.string.icon_password_hidden)
+                )
+
+                val passwordVisibilityIconAndText =
+                    if (isPasswordVisible) visibleIconAndText else hiddenIconAndText
+
+                Icon(
+                    imageVector = passwordVisibilityIconAndText.first,
+                    contentDescription = passwordVisibilityIconAndText.second
+                )
+            }
+        },
+        singleLine = true,
+        shape = MaterialTheme.shapes.small,
+        visualTransformation = if (isPasswordVisible) VisualTransformation.None else PasswordVisualTransformation(),
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Password,
+            imeAction = imeAction
+        ),
+        keyboardActions = KeyboardActions(onDone = {
+            keyboardController?.hide()
+        }),
+        isError = isError,
+        supportingText = {
+            if (isError) {
+                ErrorTextInputField(text = errorText)
+            }
+        }
+
+    )
 }

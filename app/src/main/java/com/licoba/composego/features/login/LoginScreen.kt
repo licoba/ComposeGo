@@ -42,6 +42,8 @@ import com.licoba.composego.ui.theme.dimens
 import com.licoba.composego.ui.widgets.AppButton
 import com.licoba.composego.ui.widgets.InputTextField
 import com.licoba.composego.ui.widgets.MediumTitleText
+import com.licoba.composego.ui.widgets.PasswordTextField
+import com.licoba.composego.ui.widgets.TitleText
 
 
 @Composable
@@ -68,12 +70,14 @@ fun LoginScreen(
     login: () -> Unit,
     navigateToHome: () -> Unit
 ) {
-
     Column(
         modifier = Modifier
             .fillMaxSize()
+            .verticalScroll(rememberScrollState())
+            .imePadding()
             .padding(20.dp),
-        verticalArrangement = Arrangement.Top
+        verticalArrangement = Arrangement.Top,
+        horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
         ElevatedCard(
@@ -106,8 +110,11 @@ fun LoginScreen(
                         .build(),
                     contentDescription = stringResource(id = R.string.login_do_login)
                 )
-
-                Spacer(modifier = Modifier.height(20.dp))
+                // 欢迎
+                TitleText(
+                    modifier = Modifier.padding(top = 20.dp, bottom = 36.dp),
+                    text = stringResource(id = R.string.welcome)
+                )
                 InputTextField(
                     icon = Icons.Default.AccountBox,
                     label = stringResource(R.string.login_user_name),
@@ -116,10 +123,9 @@ fun LoginScreen(
                     onUserNameChanged(it)
                 }
                 Spacer(modifier = Modifier.height(10.dp))
-                InputTextField(
-                    icon = Icons.Default.Lock,
+                PasswordTextField(
                     label = stringResource(R.string.login_password),
-                    text = loginUiInfo.password
+                    value = loginUiInfo.password
                 ) {
                     onPasswordChanged(it)
                 }
@@ -134,6 +140,25 @@ fun LoginScreen(
         }
 
 
+        // Register Section
+        Row(
+            modifier = Modifier.padding(dimens.paddingNormal),
+            horizontalArrangement = Arrangement.Center,
+            verticalAlignment = Alignment.CenterVertically
+        ) {
+            // Don't have an account?
+            Text(text = stringResource(id = R.string.do_not_have_account))
+
+            //Register
+            Text(
+                modifier = Modifier
+                    .padding(start = dimens.paddingExtraSmall)
+                    .clickable {
+                    },
+                text = stringResource(id = R.string.register),
+                color = MaterialTheme.colorScheme.primary
+            )
+        }
     }
 }
 
