@@ -74,10 +74,9 @@ fun LoginScreen(
         modifier = Modifier
             .fillMaxSize()
             .verticalScroll(rememberScrollState())
-            .imePadding()
             .padding(20.dp),
         verticalArrangement = Arrangement.Top,
-        horizontalAlignment = Alignment.CenterHorizontally
+        horizontalAlignment = Alignment.CenterHorizontally,
     ) {
 
         ElevatedCard(
@@ -112,11 +111,10 @@ fun LoginScreen(
                 )
                 // 欢迎
                 TitleText(
-                    modifier = Modifier.padding(top = 20.dp, bottom = 36.dp),
+                    modifier = Modifier.padding(top = 20.dp, bottom = 32.dp),
                     text = stringResource(id = R.string.welcome)
                 )
                 InputTextField(
-                    icon = Icons.Default.AccountBox,
                     label = stringResource(R.string.login_user_name),
                     text = loginUiInfo.userName
                 ) {
@@ -140,16 +138,13 @@ fun LoginScreen(
         }
 
 
-        // Register Section
+        // 注册区域
         Row(
-            modifier = Modifier.padding(dimens.paddingNormal),
+            modifier = Modifier.padding(16.dp),
             horizontalArrangement = Arrangement.Center,
             verticalAlignment = Alignment.CenterVertically
         ) {
-            // Don't have an account?
             Text(text = stringResource(id = R.string.do_not_have_account))
-
-            //Register
             Text(
                 modifier = Modifier
                     .padding(start = dimens.paddingExtraSmall)

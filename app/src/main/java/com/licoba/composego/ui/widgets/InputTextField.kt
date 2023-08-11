@@ -52,23 +52,6 @@ fun InputTextField(
     onValueChange: (String) -> Unit
 ) {
     when (type) {
-        InputTextFieldType.Classic -> TextField(
-            value = text,
-            label = { Text(text = label) },
-            enabled = enabled,
-            modifier = modifier.fillMaxWidth(),
-            keyboardOptions = KeyboardOptions(
-                keyboardType = keyboardType,
-                imeAction = imeAction
-            ),
-            colors = TextFieldDefaults.outlinedTextFieldColors(
-                focusedLabelColor = MaterialTheme.colorScheme.onSurface
-            ),
-            onValueChange = onValueChange,
-            shape = MaterialTheme.shapes.extraSmall,
-            placeholder = { Text(text = label) },
-            maxLines = maxLine
-        )
 
         InputTextFieldType.Outlined -> OutlinedTextField(
             value = text,
@@ -82,8 +65,13 @@ fun InputTextField(
             ),
             enabled = enabled,
             shape = MaterialTheme.shapes.small,
-            maxLines = maxLine
+            maxLines = maxLine,
+            singleLine = true,
+            supportingText = {
+
+            }
         )
+
 
         InputTextFieldType.WithIcon -> OutlinedTextField(
             value = text,
@@ -151,7 +139,7 @@ fun PreviewOutlinedTextField() {
 @Composable
 fun PreviewClassicTextField() {
     AppTheme {
-        InputTextField(text = "Classic", type = InputTextFieldType.Classic) {}
+        InputTextField(text = "Classic", type = InputTextFieldType.Outlined) {}
     }
 }
 
@@ -168,7 +156,7 @@ fun PreviewWithIconTextField() {
 }
 
 enum class InputTextFieldType {
-    Classic, Outlined, WithIcon, IconClickable
+    Outlined, WithIcon, IconClickable
 }
 
 
