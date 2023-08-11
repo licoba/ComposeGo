@@ -110,7 +110,7 @@ fun LoginScreen(
                     contentDescription = stringResource(id = R.string.login_do_login)
                 )
                 // 欢迎
-                TitleText(
+                MediumTitleText(
                     modifier = Modifier.padding(top = 20.dp, bottom = 32.dp),
                     text = stringResource(id = R.string.welcome)
                 )

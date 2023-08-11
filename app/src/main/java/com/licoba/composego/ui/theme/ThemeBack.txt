@@ -24,14 +24,14 @@ import androidx.core.view.WindowCompat
  */
 @VisibleForTesting
 val LightColors = lightColorScheme(
-    primary = Purple40,  // 主要颜色，通常用于突出重要的界面元素，如按钮、选中状态等。
+    primary = Blue70,  // 主要颜色，通常用于突出重要的界面元素，如按钮、选中状态等。
     onPrimary = Color.White,  // 在按钮上的文本或图标的颜色。
-    primaryContainer = Purple90, //  主要容器颜色，用于表示主要颜色的容器，如卡片、对话框等。
-    onPrimaryContainer = Purple10, // 在主要容器颜色上的文本或图标的颜色。
-    secondary = Orange40, // 次要颜色，通常用于辅助界面元素。
+    primaryContainer = Blue20, //  主要容器颜色，用于表示主要颜色的容器，如卡片、对话框等。
+    onPrimaryContainer = Blue90, // 在主要容器颜色上的文本或图标的颜色。
+    secondary = Green40, // 次要颜色，通常用于辅助界面元素。
     onSecondary = Color.White, // 在次要颜色上的文本或图标的颜色。
-    secondaryContainer = Orange90, //  次要容器颜色，用于表示次要颜色的容器。
-    onSecondaryContainer = Orange10, // 在次要容器颜色上的文本或图标的颜色。
+    secondaryContainer = Green50, //  次要容器颜色，用于表示次要颜色的容器。
+    onSecondaryContainer = Green80, // 在次要容器颜色上的文本或图标的颜色。
     tertiary = Blue40, // 第三颜色，用于辅助界面元素。
     onTertiary = Color.White, // 在第三颜色上的文本或图标的颜色。
     tertiaryContainer = Blue90, // 第三容器颜色，用于表示第三颜色的容器。
@@ -40,9 +40,9 @@ val LightColors = lightColorScheme(
     onError = Color.White, //  在错误颜色上的文本或图标的颜色。
     errorContainer = Red90, //  错误容器颜色，用于表示错误颜色的容器。
     onErrorContainer = Red10, //  在错误容器颜色上的文本或图标的颜色。
-    background = DarkPurpleGray99, // 背景颜色，用于界面的背景。
+    background = White10, // 背景颜色，用于界面的背景。
     onBackground = DarkPurpleGray10, // 在背景颜色上的文本或图标的颜色。
-    surface = DarkPurpleGray99, // 表面颜色，用于表示界面上的表面元素，如卡片、对话框等。
+    surface = DarkPurpleGray90, // 表面颜色，用于表示界面上的表面元素，如卡片、对话框等。
     onSurface = DarkPurpleGray10, //  在表面颜色上的文本或图标的颜色。
     surfaceVariant = PurpleGray90, // 表面变体颜色，用于表示表面元素的不同状态或变体。
     onSurfaceVariant = PurpleGray30, // 在表面变体颜色上的文本或图标的颜色。
