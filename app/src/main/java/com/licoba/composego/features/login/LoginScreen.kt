@@ -8,16 +8,9 @@ import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
-import androidx.compose.foundation.layout.imePadding
-import androidx.compose.foundation.layout.navigationBarsPadding
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.AccountBox
-import androidx.compose.material.icons.filled.AccountCircle
-import androidx.compose.material.icons.filled.Lock
-import androidx.compose.material.icons.outlined.AccountCircle
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
@@ -35,8 +28,6 @@ import coil.compose.AsyncImage
 import coil.request.ImageRequest
 import coil.size.Scale
 import com.licoba.composego.R
-import com.licoba.composego.core.viewmodel.LoginUiInfo
-import com.licoba.composego.core.viewmodel.LoginViewModel
 import com.licoba.composego.ui.theme.AppTheme
 import com.licoba.composego.ui.theme.dimens
 import com.licoba.composego.ui.widgets.AppButton
@@ -44,7 +35,6 @@ import com.licoba.composego.ui.widgets.InputTextField
 import com.licoba.composego.ui.widgets.LoadingDialog
 import com.licoba.composego.ui.widgets.MediumTitleText
 import com.licoba.composego.ui.widgets.PasswordTextField
-import com.licoba.composego.ui.widgets.TitleText
 
 
 @Composable
@@ -53,24 +43,22 @@ internal fun LoginRoute(
     viewModel: LoginViewModel = hiltViewModel(),
     navigateToHome: () -> Unit = {}
 ) {
-    val loginUiInfo = viewModel.loginUiInfo.collectAsState().value
+    val loginUiInfo = viewModel.loginUiState.collectAsState().value
     LoginScreen(
-        loginUiInfo = loginUiInfo,
+        loginUiState = loginUiInfo,
         onUserNameChanged = viewModel::onUserNameChanged,
         onPasswordChanged = viewModel::onPasswordChanged,
         login = viewModel::login,
-        isLoading = false,
         navigateToHome = navigateToHome
     )
 }
 
 @Composable
 fun LoginScreen(
-    loginUiInfo: LoginUiInfo,
+    loginUiState: LoginUiState,
     onUserNameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     login: () -> Unit,
-    isLoading: Boolean = false,
     navigateToHome: () -> Unit
 ) {
     Column(
@@ -119,20 +107,22 @@ fun LoginScreen(
                 )
                 InputTextField(
                     label = stringResource(R.string.login_user_name),
-                    text = loginUiInfo.userName
+                    text = loginUiState.userName
                 ) {
                     onUserNameChanged(it)
                 }
                 Spacer(modifier = Modifier.height(10.dp))
                 PasswordTextField(
                     label = stringResource(R.string.login_password),
-                    value = loginUiInfo.password
+                    value = loginUiState.password
                 ) {
                     onPasswordChanged(it)
                 }
                 Spacer(modifier = Modifier.height(20.dp))
-                AppButton(text = stringResource(id = com.licoba.composego.R.string.login_do_login)) {
-                    //TODO call  login()
+                AppButton(
+                    text = stringResource(id = com.licoba.composego.R.string.login_do_login),
+                    enabled = loginUiState.isFormValid()
+                ) {
                     login()
 //            navigateToHome()
                 }
@@ -158,7 +148,7 @@ fun LoginScreen(
             )
         }
 
-        LoadingDialog(isShowingDialog = isLoading)
+        LoadingDialog(isShowingDialog = loginUiState.isLoading)
 
     }
 }
@@ -167,6 +157,6 @@ fun LoginScreen(
 @Composable
 fun LoginPreview() {
     AppTheme {
-        LoginScreen(LoginUiInfo("", ""), {}, {}, {}, false,{})
+        LoginScreen(LoginUiState("", ""), {}, {}, {}, {})
     }
 }

@@ -5,6 +5,22 @@ import androidx.compose.ui.graphics.Color
 /**
  * App colors.
  */
+
+
+// 黑色
+
+internal val Black10 = Color(0xFF1A1A1A)
+internal val Black20 = Color(0xFF333333)
+internal val Black30 = Color(0xFF4D4D4D)
+internal val Black40 = Color(0xFF666666)
+internal val Black50 = Color(0xFF808080)
+internal val Black60 = Color(0xFF999999)
+internal val Black70 = Color(0xFFB3B3B3)
+internal val Black80 = Color(0xFFCCCCCC)
+internal val Black90 = Color(0xFFE6E6E6)
+internal val Black95 = Color(0xFFF2F2F2)
+
+
 // 蓝色
 internal val Blue10 = Color(0xFF001F29)
 internal val Blue20 = Color(0xFF003544)
@@ -139,3 +155,16 @@ internal val Teal70 = Color(0xFF83BDB7)
 internal val Teal80 = Color(0xFFA2CED9)
 internal val Teal90 = Color(0xFFBEEAF6)
 internal val Teal95 = Color(0xFFD9F2FA)
+
+
+// 灰色
+internal val Gray10 = Color(0xFF1A1A1A)
+internal val Gray20 = Color(0xFF333333)
+internal val Gray30 = Color(0xFF4D4D4D)
+internal val Gray40 = Color(0xFF666666)
+internal val Gray50 = Color(0xFF808080)
+internal val Gray60 = Color(0xFF999999)
+internal val Gray70 = Color(0xFFB3B3B3)
+internal val Gray80 = Color(0xFFCCCCCC)
+internal val Gray90 = Color(0xFFE6E6E6)
+internal val Gray95 = Color(0xFFF2F2F2)
