@@ -33,12 +33,12 @@ class MainActivity : ComponentActivity() {
 
 //        val viewModel: LoginViewModel by
 
+        val TAG = MainActivity::class.simpleName.toString()
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         splashScreen.setKeepOnScreenCondition {
             lifecycleScope.launch {  }
-            showDebugToast("闪屏页消失")
-            logD("闪屏页消失","很好")
+            logD("闪屏页消失",TAG)
             false  // false为消失  true为保持
             //return true while fetching data from network
             // when (uiState) {

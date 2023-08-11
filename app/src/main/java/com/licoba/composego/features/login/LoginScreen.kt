@@ -41,6 +41,7 @@ import com.licoba.composego.ui.theme.AppTheme
 import com.licoba.composego.ui.theme.dimens
 import com.licoba.composego.ui.widgets.AppButton
 import com.licoba.composego.ui.widgets.InputTextField
+import com.licoba.composego.ui.widgets.LoadingDialog
 import com.licoba.composego.ui.widgets.MediumTitleText
 import com.licoba.composego.ui.widgets.PasswordTextField
 import com.licoba.composego.ui.widgets.TitleText
@@ -58,6 +59,7 @@ internal fun LoginRoute(
         onUserNameChanged = viewModel::onUserNameChanged,
         onPasswordChanged = viewModel::onPasswordChanged,
         login = viewModel::login,
+        isLoading = false,
         navigateToHome = navigateToHome
     )
 }
@@ -68,6 +70,7 @@ fun LoginScreen(
     onUserNameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     login: () -> Unit,
+    isLoading: Boolean = false,
     navigateToHome: () -> Unit
 ) {
     Column(
@@ -154,6 +157,9 @@ fun LoginScreen(
                 color = MaterialTheme.colorScheme.primary
             )
         }
+
+        LoadingDialog(isShowingDialog = isLoading)
+
     }
 }
 
@@ -161,6 +167,6 @@ fun LoginScreen(
 @Composable
 fun LoginPreview() {
     AppTheme {
-        LoginScreen(LoginUiInfo("", ""), {}, {}, {}, {})
+        LoginScreen(LoginUiInfo("", ""), {}, {}, {}, false,{})
     }
 }
