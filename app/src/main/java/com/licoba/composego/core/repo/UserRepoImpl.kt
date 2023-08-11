@@ -1,10 +1,8 @@
 package com.licoba.composego.core.repo
 
 import com.licoba.composego.core.network.api.UserApi
+import com.licoba.composego.core.network.dtos.UserDTO
 import com.licoba.composego.utils.logD
-import kotlinx.coroutines.CoroutineDispatcher
-import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -12,13 +10,15 @@ import javax.inject.Singleton
 @Singleton
 class UserRepoImpl @Inject constructor(
     private val api: UserApi,
-    ) : UserRepo {
-    override suspend fun doLogin(username: String, password: String) {
-//        val result = api.login(username, password)
-//        logD("结果：$result")
-//        logD("结果：${result.body()}")
-//        makeApiCall()
-    }
+) : UserRepo {
+    override suspend fun doLogin(username: String, password: String) =
+        makeRequest<UserDTO> {
+            api.login(username, password).run {
+                logD(body()?.data.toString(), "登录结果")
+                emit(body()?.data!!)
+            }
+        }
+
 }
 
 

@@ -1,6 +1,5 @@
 package com.licoba.composego.core.repo
 
-import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.FlowCollector
@@ -14,7 +13,7 @@ import kotlinx.coroutines.withContext
  * @author licoba
  * @since 2023/08/11
  */
-open class BaseRepository {
+interface BaseRepository {
 
     /**
      * 发起请求封装
@@ -23,7 +22,7 @@ open class BaseRepository {
      * @param requestBlock 请求的整体逻辑
      * @return Flow<T>
      */
-    protected fun <T> request(requestBlock: suspend FlowCollector<T>.() -> Unit): Flow<T> {
+    fun <T> makeRequest(requestBlock: suspend FlowCollector<T>.() -> Unit): Flow<T> {
         return flow(block = requestBlock).flowOn(Dispatchers.IO)
         // 返回，也就是生成一个flow的工作流，运行在IO线程中
         // block 就是传入的代码块，requestBlock必须要在调用collect的时候才会执行，否则flow会立即返回

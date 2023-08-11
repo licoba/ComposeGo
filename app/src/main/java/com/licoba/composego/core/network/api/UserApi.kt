@@ -1,6 +1,6 @@
 package com.licoba.composego.core.network.api
 
-import com.licoba.composego.core.network.dtos.BaseResponse
+import com.licoba.composego.core.network.dtos.WanResponse
 import com.licoba.composego.core.network.dtos.UserDTO
 import retrofit2.Response
 import retrofit2.http.Field
@@ -15,7 +15,7 @@ interface UserApi {
     suspend fun login(
         @Field("username") username: String,
         @Field("password") password: String
-    ): Response<BaseResponse<UserDTO>>
+    ): Response<WanResponse<UserDTO>>
 
 
 }
