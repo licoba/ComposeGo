@@ -61,6 +61,7 @@ fun LoginScreen(
     login: () -> Unit,
     navigateToHome: () -> Unit
 ) {
+
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -123,8 +124,8 @@ fun LoginScreen(
                     text = stringResource(id = com.licoba.composego.R.string.login_do_login),
                     enabled = loginUiState.isFormValid()
                 ) {
-                    login()
-//            navigateToHome()
+//                    login()
+                    navigateToHome()
                 }
             }
 

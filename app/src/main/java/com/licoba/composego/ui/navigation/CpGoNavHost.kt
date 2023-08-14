@@ -16,7 +16,8 @@ fun CpGoNavHost(
         startDestination = loginNavigationRoute,
         modifier = modifier
     ) {
-        loginScreen(navigateToHome = {})
+        loginScreen(navigateToHome = { navController.navigateToHome() })
+        homeScreen {  }
     }
 }
 
