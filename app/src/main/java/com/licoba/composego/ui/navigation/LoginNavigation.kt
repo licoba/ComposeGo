@@ -6,7 +6,9 @@ import androidx.navigation.NavOptions
 import androidx.navigation.compose.composable
 import com.licoba.composego.features.login.LoginRoute
 
+// 登录模块的navigation
 const val loginNavigationRoute = "login_route"
+
 
 fun NavController.navigateToLogin(navOptions: NavOptions? = null) {
     this.navigate(loginNavigationRoute, navOptions)

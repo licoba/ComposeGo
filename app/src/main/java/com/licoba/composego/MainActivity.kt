@@ -9,7 +9,9 @@ import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
 import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.compose.rememberNavController
 import com.licoba.composego.features.login.LoginRoute
+import com.licoba.composego.ui.navigation.CpGoNavHost
 import com.licoba.composego.ui.theme.AppTheme
 import com.licoba.composego.utils.logD
 import dagger.hilt.android.AndroidEntryPoint
@@ -25,8 +27,8 @@ class MainActivity : ComponentActivity() {
         val splashScreen = installSplashScreen()
         super.onCreate(savedInstanceState)
         splashScreen.setKeepOnScreenCondition {
-            lifecycleScope.launch {  }
-            logD("闪屏页消失",TAG)
+            lifecycleScope.launch { }
+            logD("闪屏页消失", TAG)
             false  // false为消失  true为保持
             //return true while fetching data from network
             // when (uiState) {
@@ -36,12 +38,12 @@ class MainActivity : ComponentActivity() {
         }
         setContent {
             AppTheme {
-                // A surface container using the 'background' color from the theme
+                val navController = rememberNavController()
                 Surface(
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    LoginRoute()
+                    CpGoNavHost(navController = navController)
                 }
             }
         }
