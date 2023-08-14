@@ -10,5 +10,24 @@
     <string name="register">去注册</string>
     <string name="welcome">欢迎！</string>
     <string name="login_success">登录成功！</string>
+    <string name="empty_string"></string>
+    <string name="navigate_back">返回</string>
+
+
+    <!--注册界面的文案-->
+    <string name="registration_heading_text">注册</string>
+    <string name="registration_email_label">邮箱</string>
+    <string name="registration_mobile_label">手机号</string>
+    <string name="registration_password_label">密码</string>
+    <string name="registration_confirm_password_label">确认密码</string>
+    <string name="registration_button_text">注册</string>
+    <string name="back_to_login">返回登录</string>
+
+    <!--注册错误的提示-->
+    <string name="registration_error_msg_empty_email">请输入邮箱</string>
+    <string name="registration_error_msg_empty_mobile">请输入手机号</string>
+    <string name="registration_error_msg_empty_password">请输入密码</string>
+    <string name="registration_error_msg_empty_confirm_password">请确认密码</string>
+    <string name="registration_error_msg_password_mismatch">请确认两次密码输入是否一致</string>
 
 </resources>

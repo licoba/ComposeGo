@@ -225,3 +225,78 @@ fun PasswordTextField(
 
     )
 }
+
+
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun EmailTextField(
+    modifier: Modifier = Modifier,
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    isError: Boolean = false,
+    errorText: String = "",
+    imeAction: ImeAction = ImeAction.Next
+) {
+
+    OutlinedTextField(
+        modifier = modifier,
+        value = value,
+        onValueChange = onValueChange,
+        label = {
+            Text(text = label)
+        },
+        maxLines = 1,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Email,
+            imeAction = imeAction
+        ),
+        isError = isError,
+        supportingText = {
+            if (isError) {
+                ErrorTextInputField(text = errorText)
+            }
+        }
+    )
+
+}
+
+
+
+/**
+ * Mobile Number Text Field
+ */
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun MobileNumberTextField(
+    modifier: Modifier = Modifier,
+    value: String,
+    onValueChange: (String) -> Unit,
+    label: String,
+    isError: Boolean = false,
+    errorText: String = "",
+    imeAction: ImeAction = ImeAction.Next
+) {
+
+    OutlinedTextField(
+        modifier = modifier,
+        value = value,
+        onValueChange = onValueChange,
+        label = {
+            Text(text = label)
+        },
+        maxLines = 1,
+        keyboardOptions = KeyboardOptions(
+            keyboardType = KeyboardType.Phone,
+            imeAction = imeAction
+        ),
+        isError = isError,
+        supportingText = {
+            if (isError) {
+                ErrorTextInputField(text = errorText)
+            }
+        }
+    )
+
+}
