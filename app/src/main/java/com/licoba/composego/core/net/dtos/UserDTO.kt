@@ -1,4 +1,4 @@
-package com.licoba.composego.core.network.dtos
+package com.licoba.composego.core.net.dtos
 
 import com.squareup.moshi.JsonClass
 import kotlinx.serialization.Serializable

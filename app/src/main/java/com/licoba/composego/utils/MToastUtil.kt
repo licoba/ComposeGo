@@ -7,6 +7,8 @@ import com.blankj.utilcode.BuildConfig
 import com.blankj.utilcode.util.ToastUtils
 import com.licoba.composego.BaseApp
 import com.licoba.composego.utils.MAppUtil.isApkInDebug
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.launch
 
 
 /**
@@ -29,4 +31,19 @@ fun showDebugToast(
         .setGravity(gravity, 0, 0)
         .show("\uD83D\uDE05\n" + text)
 
+}
+
+
+/**
+ * toast
+ * @param text String
+ */
+fun showToast(text: String, durations: Int = Toast.LENGTH_SHORT, gravity: Int = Gravity.CENTER) {
+    BaseApp.mCoroutineScope.launch(Dispatchers.Main) {
+        ToastUtils.make()
+            .setBgColor(Color.parseColor("#262626"))
+            .setGravity(Gravity.CENTER, 0, 0)
+            .setTextColor(Color.WHITE)
+            .show(text)
+    }
 }

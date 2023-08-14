@@ -9,5 +9,6 @@
     <string name="do_not_have_account">没有账号？</string>
     <string name="register">去注册</string>
     <string name="welcome">欢迎！</string>
+    <string name="login_success">登录成功！</string>
 
 </resources>

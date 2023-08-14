@@ -2,16 +2,18 @@ package com.licoba.composego.features.login
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.licoba.composego.BaseApp
+import com.licoba.composego.R
+import com.licoba.composego.core.net.helper.ReasonException
 import com.licoba.composego.core.repo.UserRepoImpl
 import com.licoba.composego.utils.logE
 import com.licoba.composego.utils.showDebugToast
+import com.licoba.composego.utils.showToast
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.flow.onCompletion
 import kotlinx.coroutines.flow.onStart
-import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -28,19 +30,22 @@ class LoginViewModel @Inject constructor(
 
     fun login() {
         viewModelScope.launch {
-            repo.doLogin(loginUiState.value.userName, loginUiState.value.password).catch {
-                logE(it.toString(), "注册错误")
-            }
-            .onStart {
-                loginUiState.value = loginUiState.value.copy(isLoading = true)
-            }
-            .onCompletion {
-                loginUiState.value = loginUiState.value.copy(isLoading = false)
-            }
-            .collect {
-                showDebugToast("登录成功！")
-                logE(it.toString(), "登录成功！")
-            }
+            repo.doLogin(loginUiState.value.userName, loginUiState.value.password)
+                .onStart {
+                    loginUiState.value = loginUiState.value.copy(isLoading = true)
+                }
+                .onCompletion {
+                    loginUiState.value = loginUiState.value.copy(isLoading = false)
+                }
+                .catch {
+                    if (it is ReasonException) {
+                        showToast(it.errMsg)
+                    }
+                }
+                .collect {
+                    showToast(BaseApp.applicationContext.getString(R.string.login_success))
+                    logE(it, "登录成功！")
+                }
         }
     }
 

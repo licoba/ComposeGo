@@ -1,6 +1,6 @@
 package com.licoba.composego.core.di
 
-import com.licoba.composego.core.network.api.UserApi
+import com.licoba.composego.core.net.api.UserApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

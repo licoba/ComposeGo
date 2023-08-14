@@ -1,8 +1,7 @@
-package com.licoba.composego.core.network.api
+package com.licoba.composego.core.net.api
 
-import com.licoba.composego.core.network.dtos.WanResponse
-import com.licoba.composego.core.network.dtos.UserDTO
-import retrofit2.Response
+import com.licoba.composego.core.net.dtos.WanResponse
+import com.licoba.composego.core.net.dtos.UserDTO
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.POST
@@ -15,7 +14,7 @@ interface UserApi {
     suspend fun login(
         @Field("username") username: String,
         @Field("password") password: String
-    ): Response<WanResponse<UserDTO>>
+    ): WanResponse<UserDTO>
 
 
 }

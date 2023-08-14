@@ -1,7 +1,8 @@
 package com.licoba.composego.core.repo
 
-import com.licoba.composego.core.network.api.UserApi
-import com.licoba.composego.core.network.dtos.UserDTO
+import com.licoba.composego.core.net.api.UserApi
+import com.licoba.composego.core.net.dtos.UserDTO
+import com.licoba.composego.core.net.helper.responseCodeExceptionHandler
 import com.licoba.composego.utils.logD
 import javax.inject.Inject
 import javax.inject.Singleton
@@ -14,8 +15,10 @@ class UserRepoImpl @Inject constructor(
     override suspend fun doLogin(username: String, password: String) =
         makeRequest<UserDTO> {
             api.login(username, password).run {
-                logD(body()?.data.toString(), "登录结果")
-                emit(body()?.data!!)
+                logD(this.toString(), "登录结果")
+                responseCodeExceptionHandler(this) {
+                    emit(data!!)
+                }
             }
         }
 

@@ -1,4 +1,4 @@
-package com.licoba.composego.core.network.dtos
+package com.licoba.composego.core.net.dtos
 
 import com.squareup.moshi.JsonClass
 import kotlinx.serialization.Serializable
@@ -14,7 +14,7 @@ import kotlinx.serialization.Serializable
 @Serializable
 @JsonClass(generateAdapter = true)
 data class WanResponse<T>(
-    val errorCode: Long,
+    val errorCode: Int,
     val errorMsg: String,
     val `data`: T?
 )

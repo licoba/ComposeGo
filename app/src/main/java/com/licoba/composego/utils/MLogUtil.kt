@@ -20,6 +20,14 @@ fun logE(message: String, tag: String = "") {
     }
 }
 
+fun logE(message: Any, tag: String = "") {
+    if (tag.isNotEmpty()) {
+        Timber.tag(tag).e(message.toString())
+    } else {
+        Timber.e(message.toString())
+    }
+}
+
 fun logI(message: String, tag: String = "") {
     if (tag.isNotEmpty()) {
         Timber.tag(tag).i(message)
