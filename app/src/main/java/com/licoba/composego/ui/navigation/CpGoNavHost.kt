@@ -6,6 +6,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 
+// 导航图，每一个页面都应该在这里登记
 @Composable
 fun CpGoNavHost(
     navController: NavHostController,

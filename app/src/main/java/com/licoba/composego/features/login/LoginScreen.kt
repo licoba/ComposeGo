@@ -41,7 +41,7 @@ import com.licoba.composego.ui.widgets.PasswordTextField
 internal fun LoginRoute(
     modifier: Modifier = Modifier,
     viewModel: LoginViewModel = hiltViewModel(),
-    navigateToHome: () -> Unit = {}
+    onNavigateToHome: () -> Unit = {}
 ) {
     val loginUiInfo = viewModel.loginUiState.collectAsState().value
     LoginScreen(
@@ -49,7 +49,7 @@ internal fun LoginRoute(
         onUserNameChanged = viewModel::onUserNameChanged,
         onPasswordChanged = viewModel::onPasswordChanged,
         login = viewModel::login,
-        navigateToHome = navigateToHome
+        onNavigateToHome = onNavigateToHome
     )
 }
 
@@ -59,9 +59,10 @@ fun LoginScreen(
     onUserNameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     login: () -> Unit,
-    navigateToHome: () -> Unit
+    onNavigateToHome: () -> Unit
 ) {
 
+    if(loginUiState.isLoginSuccess)  onNavigateToHome()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -124,8 +125,7 @@ fun LoginScreen(
                     text = stringResource(id = com.licoba.composego.R.string.login_do_login),
                     enabled = loginUiState.isFormValid()
                 ) {
-//                    login()
-                    navigateToHome()
+                    login()
                 }
             }
 

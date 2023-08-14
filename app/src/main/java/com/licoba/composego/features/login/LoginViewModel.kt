@@ -45,6 +45,7 @@ class LoginViewModel @Inject constructor(
                 .collect {
                     showToast(BaseApp.applicationContext.getString(R.string.login_success))
                     logE(it, "登录成功！")
+                    loginUiState.value = loginUiState.value.copy(isLoginSuccess = true)
                 }
         }
     }
@@ -63,7 +64,8 @@ data class LoginUiState(
     val userName: String,
     val password: String,
     var isLoading: Boolean = false, // 是否正在登录
-    val errorStr: String? = null
+    val errorStr: String? = null,
+    val isLoginSuccess: Boolean = false // 是否登录成功
 ) {
     fun isFormValid(): Boolean {
         return userName.isNotEmpty() && password.isNotEmpty()
