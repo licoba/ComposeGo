@@ -41,7 +41,8 @@ import com.licoba.composego.ui.widgets.PasswordTextField
 internal fun LoginRoute(
     modifier: Modifier = Modifier,
     viewModel: LoginViewModel = hiltViewModel(),
-    onNavigateToHome: () -> Unit = {}
+    onNavigateToHome: () -> Unit = {},
+    onNavigateToRegistration: () -> Unit = {},
 ) {
     val loginUiInfo = viewModel.loginUiState.collectAsState().value
     LoginScreen(
@@ -49,7 +50,8 @@ internal fun LoginRoute(
         onUserNameChanged = viewModel::onUserNameChanged,
         onPasswordChanged = viewModel::onPasswordChanged,
         login = viewModel::login,
-        onNavigateToHome = onNavigateToHome
+        onNavigateToHome = onNavigateToHome,
+        onNavigateToRegistration = onNavigateToRegistration,
     )
 }
 
@@ -59,10 +61,11 @@ fun LoginScreen(
     onUserNameChanged: (String) -> Unit,
     onPasswordChanged: (String) -> Unit,
     login: () -> Unit,
-    onNavigateToHome: () -> Unit
+    onNavigateToHome: () -> Unit,
+    onNavigateToRegistration: () -> Unit
 ) {
 
-    if(loginUiState.isLoginSuccess)  onNavigateToHome()
+    if (loginUiState.isLoginSuccess) onNavigateToHome()
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -142,8 +145,7 @@ fun LoginScreen(
             Text(
                 modifier = Modifier
                     .padding(start = dimens.paddingExtraSmall)
-                    .clickable {
-                    },
+                    .clickable { onNavigateToRegistration() },
                 text = stringResource(id = R.string.register),
                 color = MaterialTheme.colorScheme.primary
             )
@@ -158,6 +160,6 @@ fun LoginScreen(
 @Composable
 fun LoginPreview() {
     AppTheme {
-        LoginScreen(LoginUiState("", ""), {}, {}, {}, {})
+        LoginScreen(LoginUiState("", ""), {}, {}, {}, {}, {})
     }
 }

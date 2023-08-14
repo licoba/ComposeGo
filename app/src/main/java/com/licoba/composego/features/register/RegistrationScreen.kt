@@ -13,13 +13,17 @@ import androidx.compose.material.icons.outlined.ArrowBack
 import androidx.compose.material3.ElevatedCard
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.licoba.composego.R
+import com.licoba.composego.features.login.LoginScreen
+import com.licoba.composego.features.login.LoginViewModel
 import com.licoba.composego.ui.theme.AppTheme
 import com.licoba.composego.ui.theme.dimens
 import com.licoba.composego.ui.widgets.SmallClickableWithIconAndText
@@ -29,7 +33,7 @@ import com.licoba.composego.ui.widgets.TitleText
 fun RegistrationScreen(
     registrationViewModel: RegistrationViewModel = viewModel(),
     onNavigateBack: () -> Unit,
-    onNavigateToAuthenticatedRoute: () -> Unit
+    onNavigateToLogin: () -> Unit
 ) {
 
     val registrationState by remember {
@@ -38,7 +42,7 @@ fun RegistrationScreen(
 
     if (registrationState.isRegistrationSuccessful) {
         LaunchedEffect(key1 = true) {
-            onNavigateToAuthenticatedRoute.invoke()
+            onNavigateToLogin.invoke()
         }
     } else {
         // Full Screen Content
@@ -55,7 +59,7 @@ fun RegistrationScreen(
                 modifier = Modifier
                     .padding(horizontal = dimens.paddingLarge)
                     .padding(top = dimens.paddingLarge),
-                iconContentDescription = stringResource(id =  R.string.navigate_back),
+                iconContentDescription = stringResource(id = R.string.navigate_back),
                 iconVector = Icons.Outlined.ArrowBack,
                 text = stringResource(id = R.string.back_to_login),
                 onClick = onNavigateBack
@@ -129,6 +133,21 @@ fun RegistrationScreen(
 @Composable
 fun PreviewRegistrationScreen() {
     AppTheme {
-        RegistrationScreen(onNavigateBack = {}, onNavigateToAuthenticatedRoute = {})
+        RegistrationScreen(onNavigateBack = {}, onNavigateToLogin = {})
     }
+}
+
+
+@Composable
+internal fun RegisterRoute(
+    modifier: Modifier = Modifier,
+    viewModel: RegistrationViewModel = hiltViewModel(),
+    onNavigateBack: () -> Unit = {},
+    onNavigateToLogin: () -> Unit = {},
+) {
+    RegistrationScreen(
+        registrationViewModel = viewModel,
+        onNavigateBack = onNavigateBack,
+        onNavigateToLogin = onNavigateToLogin
+    )
 }

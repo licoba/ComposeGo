@@ -17,8 +17,13 @@ fun CpGoNavHost(
         startDestination = loginNavigationRoute,
         modifier = modifier
     ) {
-        loginScreen(navigateToHome = { navController.navigateToHome() })
-        homeScreen {  }
+        loginScreen(
+            navigateToHome = { navController.navigateToHome() },
+            navigateToRegister = { navController.navigateToRegister() })
+        registerScreen(
+            navigateToLogin = { },
+            onNavigateBack = { navController.navigateUp() })
+        homeScreen { }
     }
 }
 
