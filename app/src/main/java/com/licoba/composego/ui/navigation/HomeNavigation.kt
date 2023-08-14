@@ -15,6 +15,7 @@ fun NavController.navigateToHome(navOptions: NavOptions? = null) {
     this.navigate(homeNavigationRoute, navOptions)
 }
 
+// https://stackoverflow.com/questions/65610003/pass-parcelable-argument-with-compose-navigation
 fun NavGraphBuilder.homeScreen(navigateToHome: () -> Unit) {
     composable(route = homeNavigationRoute) {
         HomeRoute(navigateToHome = navigateToHome)
